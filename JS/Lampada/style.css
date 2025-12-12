@@ -1,0 +1,60 @@
+/*Body Styles*/
+
+    body,html{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100dvh;
+        width: 100dvw;
+        background-color: black;
+    }
+    body *{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+/*Main Block*/
+    
+    .mainBlock{
+        display: flex;
+        flex-direction: column;
+        width: 90dvw;
+        height: 90dvh;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        background-color: white;
+    }
+
+    /*Light Bulb Image*/
+
+        .lightBulbImg{
+            width: auto;
+            height: auto;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        .bulbImgBroken{
+            width: 134px;
+            height: 233px;
+        }
+
+    /*Buttons Block*/
+
+        .buttonsBlock{
+            display: flex;
+            gap: 15px;
+        }
+
+        .buttonsBlock button{
+            padding: 10px 20px;
+            border: 2px solid rgba(0, 0, 0, 0.085);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .buttonsBlock button:hover{
+            background-color: rgba(0, 0, 0, 0.1);
+        }

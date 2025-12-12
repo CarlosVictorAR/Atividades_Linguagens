@@ -1,0 +1,152 @@
+html,body{
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+/*Main Div*/
+
+.mainDiv{
+    max-width: 1000px;
+   width: 100%;
+   height: 600px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Calculator Div*/
+
+.calculatorDiv{
+    background-color: orange;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+}
+
+/*Screen Div on Calculator Div*/
+
+.screenDiv{
+    width: 90%;
+    height: 20%;
+    background-color: black;
+    margin: 0 auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    color:white;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+/*Buttons Div on Calculator Div*/
+
+.buttonsDiv{
+    width: 100%;
+    height: 70%;
+    display: grid;
+    grid-template-areas: 
+    "CE C back divide"
+    "seven eight nine mult"
+    "four five six subt"
+    "one two three addit"
+    "changeSign zeroB decimalB equals";
+}
+
+.buttonsCalculator {
+    margin: 0 auto;
+    width: 65%;
+    height: 80%;
+    background-color: black;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.CEButton {
+    grid-area: CE;
+}
+
+.CButton {
+    grid-area: C;
+}
+
+.backButton {
+    grid-area: back;
+}
+
+.divideButton{
+    grid-area: divide;
+}
+
+.sevenButton{
+    grid-area: seven;
+}
+
+.eightButton {
+    grid-area: eight;
+}
+
+.nineButton {
+    grid-area: nine;
+}
+
+.multiplyButton {
+    grid-area: mult;
+}
+
+.fourButton {
+    grid-area: four;
+}
+
+.fiveButton {
+    grid-area: five;
+}
+
+.sixButton {
+    grid-area: six;
+}
+
+.subtractButton {
+    grid-area: subt;
+}
+
+.oneButton {
+    grid-area: one;
+}
+
+.twoButton {
+    grid-area: two;
+}
+
+.threeButton {
+    grid-area: three;
+}
+
+.addButton {
+    grid-area: addit;
+}
+
+.changeSignButton {
+    grid-area: changeSign;
+}
+
+.zeroButton {
+    grid-area: zeroB;
+}
+
+.decimalButton {
+    grid-area: decimalB;
+}
+
+.equalsButton {
+    grid-area: equals;
+}

@@ -1,0 +1,83 @@
+/*Body*/
+
+    body,html {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100dvh;
+        background-color: #f0f0f0;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+/*Main Container*/
+
+    .mainContainer {
+        height: 80dvh;
+        width: 30dvw;
+        background-color: #9c9a9a;
+        border-radius: 15px;
+    }
+
+    /*Traffic Light Container*/
+
+        .trafficLightContainer {
+            height: 70dvh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: -1;
+        }
+
+        /*Traffic Light Base*/
+
+            .trafficLightBase {
+                height: 50dvh;
+                width: 10dvw;
+                background-color: black;
+                border-radius: 100px;
+                z-index: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+
+            /*lights*/
+            
+                .light {
+                    background-color: gray;
+                    height: 13dvh;
+                    width: 13dvh;
+                    border-radius: 50px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 50px;
+                }
+
+
+    /*Buttons Container*/
+
+        .buttonsContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            height: 10dvh;
+            width: 100%;
+        }
+
+        /*Buttons*/
+            .button{
+                height: 4dvh;
+                width: 5dvw;
+                border-radius: 10px;
+                border: none;
+                cursor: pointer;
+                font-size: 0.8rem;
+                font-weight: bold;
+                color: black;
+            }
+

@@ -1,0 +1,161 @@
+/*
+
+    Paleta de Cores
+    ====================
+
+    #1C1C1C -> Plano de Fundo
+    #2f2f2f -> Barra de Navegação
+    #484848 -> Cor de fundo dos Links do Menu
+    #5d5d5d -> Borda dos Links do Menu
+    #737373 -> ????
+    #6B3030 -> ????
+    #FF5757 -> ????
+
+*/
+
+/*
+    Fonte Nunito
+*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/*
+    Geral
+*/
+
+body, p, .page {
+    color: #fff;
+    font-family: "Nunito", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1C1C1C;
+}
+
+/*
+    Barra de navegação
+*/
+ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #2f2f2f;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+li.navitem {
+    float: left;
+    border-right: 1px solid #5d5d5d;
+}
+
+li.navitem:last-child {
+    border-right: none;
+}
+
+li.navitem:first-child a.navlink {
+    padding: 7px 8px;
+}
+
+li.navitem a.navlink {
+    display: flex;
+    padding: 14px 16px;
+    background-color: #484848;
+    font-size: 20px;
+    color: #FF5757;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+li.navitem a.navlink:hover {
+    background-color: #404040;
+}
+
+a.navlink > img {
+    object-fit: contain;
+}
+
+/*
+    Links Gerais
+*/
+
+a {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    text-decoration: none;
+    font-style: normal;
+    color: #FF5757;
+}
+
+a:not(.navlink):hover {
+    text-decoration: underline;
+    color: #ff8a8a;
+    transition: color 0.3s;
+}
+
+/*
+    Layout
+*/
+
+div.page {
+    margin-top: 80px;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+/*
+    Contêiner de banners de jogos
+*/
+.banner-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: visible;
+    max-width: 100%;
+    align-items: center;
+    gap: 5px;
+    height: 320px;
+}
+
+.banner-container::-webkit-scrollbar {
+    height: 5px;
+    background: #2f2f2f;
+}
+
+.banner-container::-webkit-scrollbar-thumb {
+    background: #484848;
+    border-radius: 5px;
+}
+
+.banner-container::-webkit-scrollbar-thumb:hover {
+    background: #FF5757;
+}
+
+img.banner {
+    border-radius: 10px;
+    border: 2px solid white;
+    width: 200px;
+    height: 300px;
+
+    cursor: pointer;
+    transition:
+        width 0.3s,
+        height 0.3s,
+        margin 0.3s,
+        box-shadow 0.3s,
+        opacity 0.3s;
+}
+
+img.banner:hover {
+    margin: 0px 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.7);
+}
+
+.banner-container:has(img.banner:hover) img.banner:not(:hover) {
+    width: 190px;
+    height: 285px;
+    opacity: 0.6;
+}

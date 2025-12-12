@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Launch HTML file in Edge",
+      "file": "${workspaceFolder}/${input:htmlFile}"
+    }
+  ],
+  "inputs": [
+    {
+      "type": "pickString",
+      "id": "htmlFile",
+      "description": "Select the HTML file to launch",
+      "options": [
+        "index.html",
+        "index2.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+.principal{
+    background-color: whitesmoke;
+    width: 30%;
+    border: 2px solid black;
+    padding: 23px;
+}
+.concluido{
+    background-color: whitesmoke;
+    width: 30%;
+    border: 2px solid black;
+    margin-top: 20px;
+    padding: 23px;
+    float: right;
+    display: inline-flexbox;
+    margin-top: 0 auto;
+}
+.secundaria{
+    background-color: whitesmoke;
+    width: 30%;
+    border: 2px solid black;
+    margin-top: 20px;
+    padding: 23px;
+}
+body{
+    background-color: rgba(135, 77, 20, 0.599);
+}
+.buttonExcluir{
+    background-color: whitesmoke;
+    height: 20px;
+    padding-top: 0;
+    text-align: center;
+    float: right;
+    font-weight: bold;
+    border: 0;
+    display: inline-flex;
+}
+.concluidosection{
+    background-color: whitesmoke;
+    width: 30%;
+    border: 2px solid black;
+    margin-top: 20px;
+    padding: 23px;
+    float:right
+}
+.button{
+    margin: 0 auto;
+    display: flex;
+    justify-content: right;
+    margin-right: 20px;
+}
+.cabeçalho{
+    background-color: whitesmoke;
+    padding: 10px;
+}
+.verde{
+    color: green;
+    text-decoration: line-through;
+}
+.concluidop,.verdespan{
+    color:green;
+}
+.azul{
+    color:blue;
+}
+.h1{
+    color: black;
+}
+.principalEscuro{
+    background-color: rgb(3, 4, 47);
+    width: 30%;
+    border: 2px solid black;
+    padding: 23px;
+    color: white;
+}
+.concluidoEscuro{
+    background-color: whitesmoke;
+    width: 30%;
+    border: 2px solid black;
+    margin-top: 20px;
+    padding: 23px;
+    float: right;
+    display: inline-flex;
+    margin-top: 0 auto;
+}
+.h1Escuro{
+    color: white;
+}
+.secundariaEscuro{
+    background-color: rgb(3, 4, 47);
+    width: 30%;
+    border: 2px solid black;
+    margin-top: 20px;
+    padding: 23px;
+    color: white;
+}
+.buttonExcluirEscuro{
+    background-color: rgb(3, 4, 47);
+    height: 20px;
+    padding-top: 0;
+    text-align: center;
+    float: right;
+    border: 0;
+    display: inline-flex;
+}
+.concluidosectionEscuro{
+    background-color: rgb(3, 4, 47);
+    width: 30%;
+    border: 2px solid black;
+    margin-top: 20px;
+    padding: 23px;
+    float:right;
+    color: white;
+}

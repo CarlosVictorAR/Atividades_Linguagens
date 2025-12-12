@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estuda+ Matemática</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #f4f6f8;
+      color: #333;
+    }
+
+    header {
+      background: #2d6cdf;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    .topic {
+      margin-bottom: 2rem;
+    }
+
+    .question {
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    input[type="text"], textarea, select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #2d6cdf;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .feedback {
+      margin-top: 0.5rem;
+      font-weight: bold;
+    }
+
+    .ia-response {
+      margin-top: 1rem;
+      background: #eef2f8;
+      padding: 0.75rem;
+      border-radius: 8px;
+    }
+  </style>
+<body>
+  <header>
+    Estuda+ Matemática
+  </header>
+  <div class="container">
+    <h2>Digite a matéria de matemática que deseja estudar</h2>
+    <div class="topic">
+      <input type="text" id="materiaPersonalizada" placeholder="Ex: Logaritmos, Matrizes, Derivadas...">
+      <button onclick="ensinarMateriaCustomizada()">Estudar com IA</button>
+      <div class="ia-response" id="explicacaoIA"></div>
+      <div class="ia-response" id="questoesIA"></div>
+    </div>
+  </div>
+
+  <script>
+  </script>
+</body>
+</html>

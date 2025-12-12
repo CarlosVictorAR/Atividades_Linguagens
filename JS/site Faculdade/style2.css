@@ -1,0 +1,264 @@
+@charset "UTF-8";
+/*
+
+    Paleta de Cores
+    ====================
+
+    #1C1C1C -> Plano de Fundo
+    #2f2f2f -> Barra de Navegação
+    #484848 -> Cor de fundo dos Links do Menu
+    #5d5d5d -> Borda dos Links do Menu
+    #737373 -> ????
+    #6B3030 -> ????
+    #FF5757 -> ????
+
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Nunito", sans-serif;
+    font-size: 1em;
+    background-color: #252424;
+    height: 100vh;
+    overflow-x: hidden;
+    cursor: url('imagens/icon1.png'), auto;
+}
+header{
+    background-color: #2f2f2f;
+    color: white;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    padding: 20px;
+
+}
+header section{
+    margin-right: 20px;
+    transform: translateX(-25rem);
+}
+
+header img{
+    width: auto;
+    flex: 0 0 100px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.589);
+    margin-left: 50px;
+    height: 20vh;
+    gap: 0px;
+    transform: translateX(+4rem);
+}
+
+
+main{
+    background-color: white;
+    margin:10px;
+    padding:10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px black;
+}
+.page{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    /*background: none;*/
+}
+/*.page video{
+    position: fixed;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  z-index: -1;
+}*/
+.primeiroSection{
+    display: flex;
+    flex-flow: column wrap;
+    width: 50%;
+    transform: translateX(-8rem);
+    opacity: 0;
+    animation: startPrimeiro 1s forwards ease-in-out;
+}
+.segundoSection{
+    display: flex;
+    flex-flow: row wrap;
+    width: 50%;
+    margin-left: 10px;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: center;
+    padding-bottom: 10%;
+    padding-top: 20px;
+    transform: translateX(+8rem);
+    opacity: 0;
+    animation: startInterrogation 1s forwards ease-in-out;
+
+    
+}
+.topico{
+    display: flex;
+    width: 40%;
+    height: 20vh;
+    align-items: center;
+    background-color: #484848;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+}
+p{
+    text-align: justify;
+    justify-self: center;
+   align-self: center;
+   padding-left: 20px;
+   padding-right: 20px;
+   padding-bottom: 20px;
+   padding-top: 30px;
+}
+.sectionimagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*
+Banners
+*/
+.banner-container {
+    display: flex;
+     flex-flow: column nowrap;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    height: 65vh;
+    overflow-y: auto;
+
+
+}
+
+.banner-container::-webkit-scrollbar {
+    height: 5px;
+    background: #2f2f2f;
+    display: none;
+}
+
+.banner-container::-webkit-scrollbar-thumb {
+    background: #484848;
+    border-radius: 5px;
+}
+
+.banner-container::-webkit-scrollbar-thumb:hover {
+    background: #FF5757;
+}
+
+img.banner {
+    border-radius: 10px;
+    border: 2px solid white;
+    width: 10vw;
+    height: 29vh;
+   margin: 10px;
+
+    cursor: pointer;
+    transition:
+        width 0.3s,
+        height 0.3s,
+        margin 0.3s,
+        box-shadow 0.3s,
+        opacity 0.3s;
+}
+
+img.banner:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.7);
+     width: 10vw;
+       height: 29vh;
+}
+
+.banner-container:has(img.banner:hover) img.banner:not(:hover) {
+       height: 24vh;;
+    opacity: 0.6;
+    width: 10vw;
+}
+p.first{
+    width: 100%;
+    height: auto;
+    z-index: -3;
+    text-align: center;
+    display: none;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+img.second{
+    width: 15%;
+    height: 19vh;
+    z-index: 3;
+    position:absolute;
+    display: flex;
+}
+.topico:hover{
+    img.second{
+        z-index: 2;
+        opacity: 65%;
+    }
+    p.first{
+        z-index: 3;
+        display:block;
+        position:absolute;
+        
+    }
+}
+.topico{
+    background-color: black;
+    border-radius: 10px;
+    border: 3px solid white;
+}
+
+/* Camada com o padrão de imagem se movendo */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: url('imagens/controle.png');
+  background-repeat: repeat;
+  background-size: 80px 80px;
+  animation: scrollBackground 80s linear infinite;
+  z-index: -1;
+}
+
+/* Movimento contínuo diagonal */
+@keyframes scrollBackground {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-50%, -50%);
+  }
+}
+@keyframes startInterrogation {
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50%{
+        opacity: 0.5;
+    }
+}
+@keyframes startPrimeiro {
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50%{
+        opacity: 0.5;
+    }
+}
+
+.primeiroSection p{
+    background-color: #252424;
+}

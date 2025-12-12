@@ -1,0 +1,70 @@
+/*Body, Html*/
+
+    body,html {
+        width: 100dvw;
+        height: 100dvh;
+    }
+
+/*Main*/
+
+    .main {
+        background-color: black;
+        width: 100%;
+        height: 100dvh;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+
+    /*Title*/
+
+        .title {
+            width: 100dvw;
+            height: 20dvh;
+            background: none;
+            padding-bottom: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .text, .textBack{
+            height: auto;
+            width: auto;
+            background: none;
+            color: rgb(255, 200, 0);
+            font-weight: bold;
+            font-size: 50px;
+            
+        }
+        .text {
+            z-index: 1;
+        }
+        .textBack {
+            transform: translate(+2px,+2px);
+            color: rgba(0,0,0,0.8);
+            position: absolute;
+            z-index: 0;
+        }
+
+    /*Buttons SoundTrack*/
+
+        .sound{
+            background-color: black;
+            width: 100dvw;
+            height: auto;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            margin-bottom: 10dvh;
+        }
+
+        .A,.S,.D,.F,.G,.H,.J,.K,.L{
+            width: 50px;
+            height: 50px;
+            margin: 30px;
+            background-color: white;
+            border: 0;
+        }

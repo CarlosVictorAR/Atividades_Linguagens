@@ -1,0 +1,117 @@
+/*Body e HTML*/
+
+    body,html{
+
+        width: 100dvw;
+        height: 100dvh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+/*Main Div*/
+
+    .mainDiv{
+
+        background-color: black;
+        height: 90dvh;
+        width: 80dvw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+        overflow-x: hidden;
+
+    }
+
+    .camOut{
+
+        background-color: white;
+        border-radius: 100px;
+        width: 5%;
+        height: 10%;
+        transform: translateX(-60%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .camIn{
+
+        background-color: black;
+        width: 50%;
+        height: 50%;
+        border-radius: 100px;
+
+    }
+
+    /*Slides Div*/
+
+        .slidesDiv{
+
+            background-color: white;
+            min-width: 64dvw;
+            max-width: 64dvw;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            
+        }
+
+
+        /* Image */
+
+            .img{
+
+                width: 64dvw;
+                max-height: 63dvh;
+                object-fit: fill;
+                flex-shrink: 0;
+
+            }
+
+            .imagesDiv{
+
+                min-width: max-content;
+                max-height: 63dvh;
+                display: flex;
+                flex-wrap: nowrap;
+                flex-direction: row;
+                transition: transform 1s ease-in-out;
+                
+
+            }
+
+        /*Buttons*/
+
+            .previusButton, .nextButton {
+
+                width: 50px;
+                height: 50px;
+                position: absolute;
+
+            }
+
+            .previusButton {
+
+                left: 19.8dvw;
+
+
+            }
+            .nextButton {
+
+                right: 16.1dvw;
+
+            }
+
+            .addImage {
+
+                position: absolute;
+                transform: translateY(+40dvh);
+                border-radius: 100px;
+                width: 15dvw;
+                height: 5dvh;
+                font-weight: bold;
+
+            }
+

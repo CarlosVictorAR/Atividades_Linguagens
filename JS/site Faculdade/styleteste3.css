@@ -1,0 +1,426 @@
+
+@charset "UTF-8";
+/*
+
+    Paleta de Cores
+    ====================
+
+    #1C1C1C -> Plano de Fundo
+    #2f2f2f -> Barra de Navegação
+    #484848 -> Cor de fundo dos Links do Menu
+    #5d5d5d -> Borda dos Links do Menu
+    #737373 -> ????
+    #6B3030 -> ????
+    #FF5757 -> ????
+
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    color: white;
+}
+body *{
+    cursor: initial !important;
+}
+body{
+    font-family: "Nunito", sans-serif;
+    font-size: 1em;
+    background-color: #535151;
+    height: 100vh;
+    overflow-x: scroll;
+    cursor: url('imagens/icon1.png'), auto;
+}
+header{
+    background-color: #101010;
+    color: white;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    box-shadow: 0 14px 6px rgba(0, 0, 0, 0.432);
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+}
+.texto{
+    word-break: break-all;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+header img{
+    width: 30vw;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.589);
+    height:auto;
+    gap: 0px;
+}
+
+
+main{
+    background-color: white;
+    margin:10px;
+    padding:10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px black;
+}
+
+/*.page video{
+    position: fixed;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  z-index: -1;
+}*/
+.sectionTopicos{
+    display: flex;
+    flex-flow: column wrap;
+    transform: translateX(-8rem);
+    opacity: 0;
+    animation: startPrimeiro 1s forwards ease-in-out;
+    height: auto;
+}
+.Banners{
+    display: grid;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 20vh 20vh 20vh;
+    transform: translateX(+8rem);
+    opacity: 0;
+    animation: startInterrogation 1s forwards ease-in-out;
+    border-top: 3px solid rgba(225, 222, 222, 0.507);
+    border-bottom: 3px solid rgba(225, 222, 222, 0.507);
+ 
+    
+}
+.topico{
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    background-color: #484848;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    
+}
+.topico:hover{
+    img.second{
+        z-index: 2;
+        opacity: 65%;
+    }
+    p.first{
+        z-index: 3;
+        display:block;
+        position:absolute;
+        
+    }
+}
+p{
+    text-align: justify;
+    justify-self: center;
+   align-self: center;
+}
+.sectionimagem{
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    animation: scroll-horizontal 15s linear infinite;
+}
+.sectionimagem{
+    grid-area: img;
+
+}
+/*
+Banners
+*/
+.banner-container {
+    display: grid;
+     grid-template-areas: 
+     "img";
+     overflow-x: hidden;
+     font-size: 0; 
+}
+.primeiroSection-texto{
+    display: flex;
+    justify-content: start;
+    padding-left: 11vw;
+    align-items: center;
+    width: 100%;
+    
+}
+.sectionTopicos p{
+    background-color: black;
+    border: 0;
+    padding: 0;
+}
+.banner-container, .primeiroSection-texto{
+    width: 100%;
+    background-color: black;
+}
+
+.banner-container::-webkit-scrollbar {
+    height: 5px;
+    background: #2f2f2f;
+    display: none;
+}
+
+.banner-container::-webkit-scrollbar-thumb {
+    background: #484848;
+    border-radius: 5px;
+}
+
+.banner-container::-webkit-scrollbar-thumb:hover {
+    background: #FF5757;
+}
+
+img.banner {
+    border-radius: 10px;
+    width: 10vw;
+    height: 29vh;
+   margin: 10px;
+
+    cursor: pointer;
+    transition:
+        width 0.3s,
+        height 0.3s,
+        margin 0.3s,
+        box-shadow 0.3s,
+        opacity 0.3s;
+}
+
+img.banner:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.7);
+     width: 10vw;
+       height: 29vh;
+}
+
+.banner-container:has(img.banner:hover) img.banner:not(:hover) {
+       height: 24vh;;
+    opacity: 0.6;
+    width: 10vw;
+}
+p.first{
+    width: 100%;
+    height: auto;
+    z-index: -3;
+    text-align: center;
+    display: none;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.second{
+    width: 10vw;
+    height: 19vh;
+    z-index: 3;
+    position:absolute;
+    display: flex;
+}
+
+/* Camada com o padrão de imagem se movendo */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: url('imagens/controle.png');
+  background-repeat: repeat;
+  background-size: 80px 80px;
+  animation: scrollBackground 80s linear infinite;
+  z-index: -1;
+}
+
+
+@keyframes scroll-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.58%);
+  }
+}
+@keyframes scrollBackground {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-50%, -50%);
+  }
+}
+@keyframes startInterrogation {
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50%{
+        opacity: 0.5;
+    }
+}
+@keyframes startPrimeiro {
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50%{
+        opacity: 0.5;
+    }
+}
+
+
+.grid{
+    display:grid;
+    width: 100vw;
+    
+    grid-template-areas:
+    "header"
+    "texto"
+    "segundo"
+    "primeiro";
+}
+.navbar{
+    grid-area: header;
+    width: 100vw;
+    
+}
+.sectionTopicos{
+    grid-area: primeiro;
+width: 100vw;
+    background: none;
+}
+.sectionTopicos *{
+    background: none;
+}
+.Banners{
+    grid-area: segundo;
+    width: 90vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+.show{
+    width: 10vw;
+    height: 10vh;
+    background-color: black;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    top: 10px;
+    border: 2px solid rgba(255,255,255,0.3);
+    overflow: hidden;
+}
+.cima{
+    text-align: center;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+.Topicos{
+    display: none;
+    text-decoration: none;
+    font-size: 0;
+    width: 100%;
+    opacity: 0;
+}
+.show:hover{
+    height: 55vh;
+    background-color: rgba(28, 28, 28, 0.588);
+    transition: height 0.3s ease-in-out;
+    .cima{
+        display: none;
+    }
+    .Topicos{
+        display: flex;
+        opacity: 1;
+        flex-direction: column;
+        overflow: hidden;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        font-size: 0.8rem;
+    
+    }
+    .textoTopicos p{
+        color:white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.testeimg{
+    width: 1vw;
+    height: 1vh;
+}
+@keyframes showBar{
+    100%{
+        opacity: 1;
+    }
+    
+}
+.textoTopicos:hover{
+    display: flex;
+    align-items: center;
+    p{
+        color:black !important;
+        background-color: white;
+
+    }
+
+    
+}
+.texto{
+    grid-area:texto;
+    width: 90vw;
+    background-color:black;
+    border-top: 3px solid rgba(225, 222, 222, 0.507);
+    border-bottom: 3px solid rgba(225, 222, 222, 0.507);
+    padding-left: 15vw;
+    padding-right: 15vw;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+
+}
+.Topicos *{
+    height: 100%;
+}
+.Pesquisas{
+    position: absolute;
+    display: flex;
+    left: 80vw;
+    height: 10vh;
+    width: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+}
+.buttonPesquisar, .pesquisa{
+    height: 50%;
+    border: 2px solid gray;
+    background:none;
+}
+.footer-content{
+    display: grid;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    height: 30vh;
+    width: 100vw;
+    border-top: 3px solid rgba(225, 222, 222, 0.507);
+}
+.textoTopicos{
+    text-decoration: none;;
+}
+
+
