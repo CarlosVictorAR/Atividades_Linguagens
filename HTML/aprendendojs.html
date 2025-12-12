@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendendo JS</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        .blue {
+            margin:auto auto;
+            height:200px;
+            width: 80%;
+            background-color: blue;
+        }
+        .texto {
+            padding: 40px;
+            font-size: 20px;
+            opacity: 1.0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aprendendo Java Script</h1>
+    <p id="texto">
+        <button onclick = "Amarelo()">Amarelo</button>
+        <button onclick = "Branco()">Branco</button>
+        <button onclick = "alinharEsquerda()">Esquerda</button>
+        <button onclick = "alinharCentro()">Centro</button>
+    </p>
+    <div id="Cor" class="blue" onmouseover="Vermelho()" onmouseout="Azul()">
+
+    </div>
+    <input type="text" value="Ja vem com texto" class="texto Escreva" onfocus="limpaTexto()" onfocus="diminuirOpacidade()" onblur="voltarOpacidade()" >
+    <script src ='.js/index.js'>
+
+    </script>
+</body>
+</html>

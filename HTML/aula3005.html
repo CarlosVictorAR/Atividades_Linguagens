@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Meu primeiro formulário</h1>
+    <form action="#">
+        <p>Nome Completo: <input type="text" name="Nome" id="Nome_Usuario"></p>
+        <p>Data de Nascimento: <input type="date" id="Data"></p>
+        <p>Email: <input type="text" name="email" type="email"></p>
+        <p>Password: <input type="password"></p>
+        <p>
+            Escolha a imagem: <br>
+            <input type="file">
+        </p>
+        <p>
+            Assunto:<br>
+           <textarea></textarea>            
+        </p>
+        <p>
+            Sexo:<br>
+            <input type="radio" id="Masculino" name="Sexo" value="Masculino"><label for="Masculino">Masculino</label><br>
+            <input type="radio" id="Feminino" name="Sexo" value="Feminino"><label for="Feminino">Feminino</label>
+        </p>
+        <div><pre><input type="submit" value="Enviar">   <input type="reset" value=Resetar></pre></div>
+    </form>
+</body>
+</html>

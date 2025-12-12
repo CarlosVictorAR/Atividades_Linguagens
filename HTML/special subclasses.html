@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul > li:not(.categoria)::before{
+            content: ">";
+        }
+        li.categoria + *{
+            margin-top: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="categoria">Principal</li>
+        <li>Home Page</li>
+        <li>Equipe</li>
+        <li>Contato</li>
+        <li class="categoria">Conteudo</li>
+        <li>Conteudo 1</li>
+        <li>Conteudo 2</li>
+    </ul>
+</body>
+</html>
