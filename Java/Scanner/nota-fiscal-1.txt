@@ -1,0 +1,4 @@
+Código do produto: 1
+Quantidade: 10
+Valor do produto: 20
+Total da compra: 200
