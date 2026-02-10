@@ -1,9 +1,9 @@
-package LinkedList;
+package arraylist;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
-public class FunctionsLinkedList {
-    static void printLinkedList(LinkedList<Integer> array){
+public class FunctionsArrayList {
+    static void printArrayList(ArrayList<Integer> array){
         for (int i = 1; i<=array.size(); i++){
             if (i == array.size()){
                 System.out.print(i);
@@ -17,7 +17,7 @@ public class FunctionsLinkedList {
         System.out.println();
     }
 
-    static void addLinkedList(LinkedList<Integer> array, int numero){
+    static void addArrayList(ArrayList<Integer> array, int numero){
         for (int i = 1; i <= numero; i++){
             array.add(i);
         }

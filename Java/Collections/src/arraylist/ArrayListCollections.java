@@ -1,7 +1,7 @@
-package ArrayList;
+package arraylist;
 
 import java.util.ArrayList;
-import static ArrayList.FunctionsArrayList.*;
+import static arraylist.FunctionsArrayList.*;
 public class ArrayListCollections {
     public static void main (String args[]){
         ArrayList<Integer> meuArrayList = new ArrayList<>();
