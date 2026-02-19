@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <h1>Portal de Moda</h1>
+        <h2>
+            Moda
+        </h2>
+        <table>
+            <tr>
+                <td>ID</td>
+                <td>Titulo</td>
+                <td>Conteudo</td>
+            </tr>
+            <% for (let i = 0; i < moda.length; i++) { %>
+            <tr>
+                <td><%= moda[i].id_moda %></td>
+                <td><%= moda[i].titulo %></td>
+                <td><%= moda[i].conteudo %></td>
+            </tr>
+            <% }; %>
+        </table>
+    </body>
+</html>
+        

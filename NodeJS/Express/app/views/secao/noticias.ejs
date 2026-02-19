@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <h1>Portal de Notícias</h1>
+
+        <h2>
+            Noticia
+        </h2>
+            <table>
+                <tr>
+                    <td>ID</td>
+                    <td>Titulo</td>
+                    <td>Conteudo</td>
+                </tr>
+
+                <% for (let i = 0; i < noticias.length; i++) { %>
+                <tr>
+                    <td><%= noticias[i].id_noticias %></td>
+                    <td><%= noticias[i].titulo %></td>
+                    <td><%= noticias[i].noticia %></td>
+                </tr>
+                <% }; %> 
+
+            </table>
+    </body>
+</html>
+        
