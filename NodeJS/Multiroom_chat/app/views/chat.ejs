@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Multiroom Chat</title>
+		
+		<!-- JQUERY -->
+		<script src="js/jquery-2.2.1.js"></script>
+		
+		<!-- bootstrap - link cdn -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	
+		<!-- estilo -->
+		<link href="css/style.css" rel="stylesheet">
+		
+		<script type="text/javascript">
+		
+			$(document).ready(function(){
+				$("#exibe_chat").click(function(){
+					$("#dialogos").show();
+					$("#participantes").hide();
+					ocultaNavbar();
+				});
+				
+				$("#exibe_participantes").click(function(){
+					$("#participantes").show();
+					$("#dialogos").hide();
+					ocultaNavbar();
+				});
+			});
+			
+			function ocultaNavbar(){
+				$("#btn_navbar_toggle").attr("class","navbar-toggle collapsed");
+				$("#navbar-collapse-1").attr("class","navbar-collapse collapse");
+				$("#btn_navbar_toggle").attr("aria-expanded","false");
+				$("#navbar-collapse-1").attr("aria-expanded","false");
+			}
+		</script>
+	</head>
+
+	<body>
+	
+	
+		<nav class="navbar navbar-default navbar-fixed-top" style="background-color: var(--background_color);" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1" id="btn_navbar_toggle">
+						<span class="sr-only" style="color: var(--color_letters);">Toggle navigation</span>
+						<span class="icon-bar" style="color: var(--color_letters);"></span>
+						<span class="icon-bar" style="color: var(--color_letters);"></span>
+						<span class="icon-bar" style="color: var(--color_letters)white;"></span>
+					</button>
+					<a class="navbar-brand" href="#" style="color: var(--color_letters);">Multiroom Chat</a>
+				</div>
+				
+				
+				<div class="collapse navbar-collapse" id="navbar-collapse-1" >
+					<ul class="nav navbar-nav" style="background-color: var(--background_color);">
+						<li>
+							<a href="#" id="exibe_chat" style="color: var(--color_letters);">Chat</a>
+						</li>
+						<li>
+							<a href="#" id="exibe_participantes" style="color: var(--color_letters);">Participantes</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	
+		<div class="container">
+            <div class="row conversa">
+				<div class="col-md-1"></div>
+				<div class="col-md-10" id="dialogos">
+				</div>
+				<div class="col-md-1"></div>
+                
+            </div>
+			
+			<div class="row participantes" id="participantes" style="display:none">
+				<div class="col-md-1"></div>
+				<div class="col-md-10" id="participantes_pessoas">
+				
+				</div>
+				<div class="col-md-1"></div>
+                
+            </div>
+        </div>
+		
+		<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" style="background-color: var(--background_color);">
+			<div class="container">
+				<div class="panel-body campo-mensagem">
+					<div class="col-md-12">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Mensagem" id="inputTexto">
+							<input type="hidden" value="<%=dados.apelido%>" id="apelido">
+							<input type="hidden" value="0" id="apelido_numero_de_participantes">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button" id="botaoEnviar">></button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>		
+		
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			let socket = io();
+			//função parametro para enviar mensagem com enter
+			function keydownEvent(event){
+				if (event.which === 13) {
+					if ($('#inputTexto').val().length <= 0){
+						return;
+					}
+					socket.emit('enviarMensagem', {apelido : $('#apelido').val(), mensagem : $('#inputTexto').val(), apelido_numero_de_participantes : $('#apelido_numero_de_participantes').val()});
+					$("#inputTexto").val('');
+					$("#botaoEnviar").off('click');
+					$("#inputTexto").off('keydown');
+					setInterval(function(){
+						$("#inputTexto").on('keydown',function(event){
+							keydownEvent(event);
+						});
+						$("#botaoEnviar").on('click',function(){
+							clickEvent();
+						});
+					},3000);
+					rolarAteOFim();
+				}
+			}
+			//função parametro para enviar mensagem com enter
+			function clickEvent(){
+				if ($('#inputTexto').val().length <= 0){
+					return;
+				}
+				socket.emit('enviarMensagem', {apelido : $('#apelido').val(), mensagem : $('#inputTexto').val(), apelido_numero_de_participantes : $('#apelido_numero_de_participantes').val()});
+				$("#inputTexto").val('');
+				$("#botaoEnviar").off('click');
+				$("#inputTexto").off('keydown');
+					setInterval(function(){
+						$("#inputTexto").on('keydown',function(event){
+							keydownEvent(event);
+						});
+						$("#botaoEnviar").on('click',function(){
+							clickEvent();
+						});
+					},3000);
+				rolarAteOFim();
+			}
+			//função que rola a tela para o final
+			function rolarAteOFim() {
+				window.scrollTo(0, document.body.scrollHeight);
+			}
+
+			//guarda apelido quando alguém se conecta
+			socket.on('connect', function(){
+				socket.emit('registrarApelido', $('#apelido').val());
+			});
+
+			//eventos para enviar mensagem
+			$('#botaoEnviar').on('click',function(){
+				clickEvent()
+			});
+			$('#inputTexto').on('keydown', function(event){
+				keydownEvent(event);
+			});
+
+			//evento que recebe um emit e cria a mensagem
+			socket.on('msgParaCliente',function(data){
+				let html = '';
+				html += '<div class="dialogo">';
+					html += '<h4>' + data.apelido + '</h4>';
+					html += '<p>' + data.mensagem + '</p>';
+				html += '</div>';
+				$('#dialogos').append(html);
+				rolarAteOFim();
+			});
+
+			//evento que recebe um emit e atualiza os participantes(falta integrar o banco para n precisar mais dela)
+			socket.on('atualizarParticipantes', function(participante){
+				let html = '';
+				html += '<span class="participante" style="font-weight: bold; font-size: 15px;">';
+				html += '<img src="images/ico_usuario.png" />';
+				html += participante;
+				html += '</span>';
+				$('#participantes_pessoas').append(html);
+			});
+
+			//evento que atualiza o valor do input apelido_numero_de_participantes para 1 e proibe de ficar adicionando infinito
+			socket.on('atualizarQuantidade',function(){
+				$('#apelido_numero_de_participantes').val(1);
+			});
+		</script>
+	</body>
+</html>
