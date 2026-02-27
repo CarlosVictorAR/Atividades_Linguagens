@@ -3,7 +3,7 @@ module.exports.cadastro = function(application,req,res){
     res.render('cadastro',{validation : {}, dados : {}});
 }
 
-module.exports.cadastrar = function(application,req,res){
+module.exports.cadastrar = async function(application,req,res){
     let dados = req.body;
     req.assert('nome',"Nome não pode ser vazio").notEmpty();
     req.assert('senha',"Senha não pode ser vazio").notEmpty();

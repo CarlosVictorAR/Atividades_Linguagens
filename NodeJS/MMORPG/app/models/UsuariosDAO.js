@@ -1,7 +1,8 @@
 function UsuariosDAO(connection){
     this._connection = connection();
+
 }
-   UsuariosDAO.prototype.inserirUsuario = function(usuario){
+   UsuariosDAO.prototype.inserirUsuario = async function(usuario){
        const Schema = this._connection.Schema;
        const UsuarioSchema = new Schema({
            nome: { type: String, required: true },
@@ -10,10 +11,9 @@ function UsuariosDAO(connection){
            casa: { type: String, required: true }
        });
 
-       const UsuarioModel = this._connection.models.usuarios || this._connection.model('usuarios', UsuarioSchema);
-       
-        const usuarioNovo = new UsuarioModel(usuario);
-        usuarioNovo.save();
+       let UsuarioModel = this._connection.model('usuarios', UsuarioSchema);
+       let array = await UsuarioModel.find({nome: {$eq: "caca"}});
+       console.log(array[0].usuario);
    }
 module.exports = function(){
     return UsuariosDAO;
