@@ -2,18 +2,18 @@
   "name": "mmorpg",
   "version": "1.0.0",
   "description": "",
+  "type": "commonjs",
   "main": "",
   "scripts": {
-    "start": "nodemon app"
+    "start": "node --watch app"
   },
   "author": "Carlos",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.15.2",
     "consign": "^0.1.2",
+    "dotenv": "^17.3.1",
     "ejs": "^2.5.2",
-    "express": "^4.14.0",
-    "express-validator": "^2.20.8",
+    "express": "^4.21.2",
     "mongodb": "^7.1.0",
     "mongoose": "^9.2.2"
   }

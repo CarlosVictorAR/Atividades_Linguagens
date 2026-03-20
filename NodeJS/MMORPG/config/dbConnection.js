@@ -1,8 +1,7 @@
 /* importar o mongodb */
 const mongoose = require("mongoose");
-const mongoURI = 'mongodb://127.0.0.1:27017/got';
 let connection = function(){
-    mongoose.connect(mongoURI);
+    mongoose.connect(process.env.MONGO_URI);
     return mongoose;
 }
 module.exports = function(){

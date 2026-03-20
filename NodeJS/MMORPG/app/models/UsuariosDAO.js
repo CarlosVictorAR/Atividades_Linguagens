@@ -1,20 +1,26 @@
-function UsuariosDAO(connection){
+function UsuariosDAO(connection,application){
     this._connection = connection();
+    this._application = application;
+    this._model = this._application.app.models.model;
 
 }
-   UsuariosDAO.prototype.inserirUsuario = async function(usuario){
-       const Schema = this._connection.Schema;
-       const UsuarioSchema = new Schema({
-           nome: { type: String, required: true },
-           senha: { type: String, required: true },
-           usuario: { type: String, required: true },
-           casa: { type: String, required: true }
-       });
-
-       let UsuarioModel = this._connection.model('usuarios', UsuarioSchema);
-       let array = await UsuarioModel.find({nome: {$eq: "caca"}});
-       console.log(array[0].usuario);
-   }
+UsuariosDAO.prototype.inserirUsuario = async function(usuario){
+    try{
+        let User = await this._model.create({
+            nome: usuario.nome,
+            senha: usuario.senha,
+            usuario: usuario.usuario,
+            casa: usuario.casa
+        });
+        return User;
+    }
+    catch (err){
+        return {
+            error: "E_Error",
+            message: err.msg
+        };
+    }
+}
 module.exports = function(){
     return UsuariosDAO;
 }

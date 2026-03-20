@@ -4,19 +4,25 @@ module.exports.cadastro = function(application,req,res){
 }
 
 module.exports.cadastrar = async function(application,req,res){
-    let dados = req.body;
-    req.assert('nome',"Nome não pode ser vazio").notEmpty();
-    req.assert('senha',"Senha não pode ser vazio").notEmpty();
-    req.assert('usuario',"Usuario não pode ser vazio").notEmpty();
-    req.assert('casa',"Casa não pode ser vazio").notEmpty();
-    let errors = req.validationErrors();
-    if (errors){
-        res.render('cadastro',{validation : errors, dados : dados});
-        return;
+    try{
+        let usuario = req.body;
+        //validação
+        let connection = application.config.dbConnection;
+        let UsuariosDAO = new application.app.models.UsuariosDAO(connection, application);
+        let response = await UsuariosDAO.inserirUsuario(usuario);
+        if (response.nome){ /*se existir user aqui ele envia o objeto criado com sucesso*/
+            res.status(201).json({
+                message: 'Criado com sucesso',
+                status: 201,
+                body: response
+            })
+        }
+        else {
+            throw response;
+        }
     }
-    let connection = application.config.dbConnection;
-    let UsuariosDAO = new application.app.models.UsuariosDAO(connection);
-    UsuariosDAO.inserirUsuario(dados);
+    catch (err){
+        res.status(500).json(err);
+    }
 
-    res.send('oi');
 }
