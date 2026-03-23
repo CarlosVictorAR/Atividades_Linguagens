@@ -4,7 +4,7 @@ module.exports = (application)=>{
         const Usuario = new Schema({
             nome: {type: String, required: true},
             senha: {type: String, required: true},
-            usuario: {type: String, required: true},
+            usuario: {type: String, required: true, unique: true},
             casa: {type: String, required: true}
         });
         const UsuarioModel = connection.model('usuarios',Usuario);

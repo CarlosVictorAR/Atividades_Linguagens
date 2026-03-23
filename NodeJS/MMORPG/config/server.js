@@ -4,6 +4,9 @@ let express = require('express');
 /* importar o módulo do consign */
 let consign = require('consign');
 
+/* importar o módulo do session */
+let session = require('express-session');
+
 /* iniciar o objeto do express */
 let app = express();
 
@@ -14,6 +17,12 @@ app.set('views', './app/views');
 /* configurar o middleware express.static */
 app.use(express.static('./app/public'));
 
+/* configurar o session para login */
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'chave_secreta',
+    resave: false,
+    saveUninitialized: false
+}));
 /* configurar parser para JSON */
 app.use(express.json());
 

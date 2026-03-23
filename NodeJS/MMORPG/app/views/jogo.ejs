@@ -6,7 +6,7 @@
 		<title>MMORPG - Game of Thrones</title>
 		
 		<!-- bootstrap - link cdn -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
 	
 		<!-- incluindo css -->
 		<link href="css/style.css" rel="stylesheet">
@@ -15,10 +15,10 @@
 
 	<body class="body-jogo">
 
-		<nav class="navbar navbar-default navbar-static-top">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container">
-				<div class="form-group sair">
-					<a href="/"><button type="button" class="btn btn-info pull-right">Sair</button></a>
+				<div class="sair">
+					<a href="/"><button type="button" class="btn btn-info float-end">Sair</button></a>
 				</div>
 			</div>
 		</nav>
@@ -26,29 +26,29 @@
 	    <div class="container">
 	    	
 			<div class="row">
-	    		<div class="col-sm-3 casa">
-					<img src="images/casa_<%= data.casa %>.jpg" />
+	    		<div class="col-md-3 casa">
+					<img src="images/casa_<%= data.casa %>.jpg" class="img-fluid" />
 				</div>
 
-	    		<div class="col-sm-9">
+	    		<div class="col-md-9">
 					<div class="row barra-superior">
-						<div class="col-sm-2"> 
-							<img src="images/habilidades/temor.jpg" title="Temor" alt="Temor" />
+<div class="col-md-2"> 
+						<img src="images/habilidades/temor.jpg" title="Temor" alt="Temor" class="img-fluid" />
 							<span>754</span>
 						</div>
 						
-						<div class="col-sm-2"> 
-							<img src="images/habilidades/sabedoria.jpg" title="Sabedoria" alt="Sabedoria"/>
+<div class="col-md-2"> 
+						<img src="images/habilidades/sabedoria.jpg" title="Sabedoria" alt="Sabedoria" class="img-fluid" />
 							<span>754</span>
 						</div>
 						
-						<div class="col-sm-2"> 
-							<img src="images/habilidades/comercio.jpg" title="Comércio" alt="Comércio"/>
+<div class="col-md-2"> 
+						<img src="images/habilidades/comercio.jpg" title="Comércio" alt="Comércio" class="img-fluid" />
 							<span>754</span>
 						</div>
 						
-						<div class="col-sm-2"> 
-							<img src="images/habilidades/magia.jpg" title="Magia" alt="Magia"/>
+					<div class="col-md-2"> 
+						<img src="images/habilidades/magia.jpg" title="Magia" alt="Magia" class="img-fluid" />
 							<span>754</span>
 						</div>
 					</div>
@@ -56,8 +56,8 @@
 	    	</div>
 			
 			<div class="row">
-				<div class="col-sm-3"></div>
-				<div class="col-sm-9">
+				<div class="col-md-3"></div>
+				<div class="col-md-9">
 					<div class="acoes"></div>					
 				</div>
 			</div>
@@ -68,18 +68,18 @@
 			<div class="container">
 			
 				<div class="row">
-					<div class="col-sm-1">
-						<img src="images/outros/suditos.jpg" title="Aldeões" alt="Aldeões"/>
+					<div class="col-md-1">
+						<img src="images/outros/suditos.jpg" title="Aldeões" alt="Aldeões" class="img-fluid" />
 					</div>
 					
-					<div class="col-sm-1">
-						<img src="images/outros/pergaminho.jpg" title="Pergaminhos" alt="Pergaminhos"/>
+					<div class="col-md-1">
+						<img src="images/outros/pergaminho.jpg" title="Pergaminhos" alt="Pergaminhos" class="img-fluid" />
 					</div>
 					
-					<div class="col-sm-8"></div>
+					<div class="col-md-8"></div>
 					
-					<div class="col-sm-2">
-						<img src="images/outros/moeda.jpg" title="Moeda" alt="Moeda"/>
+					<div class="col-md-2">
+						<img src="images/outros/moeda.jpg" title="Moeda" alt="Moeda" class="img-fluid" />
 						<span>25</span>
 					</div>
 					

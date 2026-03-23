@@ -5,15 +5,19 @@
   "type": "commonjs",
   "main": "",
   "scripts": {
-    "start": "node --watch app"
+    "init": "docker-compose up -d",
+    "start": "node --watch app.js"
   },
   "author": "Carlos",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "bootstrap": "^5.3.3",
     "consign": "^0.1.2",
     "dotenv": "^17.3.1",
     "ejs": "^2.5.2",
     "express": "^4.21.2",
+    "express-session": "^1.19.0",
     "mongodb": "^7.1.0",
     "mongoose": "^9.2.2"
   }

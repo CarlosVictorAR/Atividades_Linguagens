@@ -1,3 +1,4 @@
+let bcrypt = require('bcryptjs');
 function UsuariosDAO(connection,application){
     this._connection = connection();
     this._application = application;
@@ -6,9 +7,11 @@ function UsuariosDAO(connection,application){
 }
 UsuariosDAO.prototype.inserirUsuario = async function(usuario){
     try{
+        let salt = await bcrypt.genSalt(10);
+        let senhaHash = await bcrypt.hash(usuario.senha, salt);
         let User = await this._model.create({
             nome: usuario.nome,
-            senha: usuario.senha,
+            senha: senhaHash,
             usuario: usuario.usuario,
             casa: usuario.casa
         });
@@ -17,7 +20,8 @@ UsuariosDAO.prototype.inserirUsuario = async function(usuario){
     catch (err){
         return {
             error: "E_Error",
-            message: err.msg
+            message: err.message,
+            code: err.code
         };
     }
 }

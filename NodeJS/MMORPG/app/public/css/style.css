@@ -15,6 +15,10 @@
 	color: #fff;
 }
 
+.form-group {
+	margin-bottom: 12px;
+}
+
 .form-cadastro img{
 	margin: 0 auto;
 }
