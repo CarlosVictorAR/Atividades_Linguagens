@@ -1,10 +1,9 @@
 async function mostrarListaDeErros(response,div,button){
-    let errorsList = await response.json();
     div.style.display = 'block';
     let ul = document.createElement('ul');
     ul.innerHTML = '';
     div.innerHTML = '';
-    errorsList.errors.forEach((value)=>{
+    response.errors.forEach((value)=>{
         let li = document.createElement('li');
         li.textContent = value.message;
         ul.appendChild(li);
@@ -12,8 +11,9 @@ async function mostrarListaDeErros(response,div,button){
     div.appendChild(ul);
     button.disabled = false;
     throw {
-        error: response.statusText,
-        status: response.status
+        error: response.error || response.statusText,
+        status: response.status,
+        message: response.message ? response.message : "Bad Request"
     }
 }
 /* CADASTRO */
@@ -41,11 +41,12 @@ if (formCadastro) {
             };
 
             let response = await fetch('/cadastrar', config);
+            response = await response.json();
             if (response.status == 400 || response.status == 409) {//se der algum dos erros entra aqui
                 await mostrarListaDeErros(response,errosDiv,buttonCadastro);
             }
             //se der certo passa direto
-            await usuarioCriadoComSucesso(response);
+            await usuarioCriadoComSucesso(response,errosDiv,buttonCadastro);
         } catch (err) {
             console.error(err);
         }
@@ -53,11 +54,10 @@ if (formCadastro) {
 }
 
 
-async function usuarioCriadoComSucesso(response){
-    response = await response.json();
-    errosDiv.style.display = 'none';
+async function usuarioCriadoComSucesso(response,div,button){
+    div.style.display = 'none';
     alert('criado');
-    buttonCadastro.disabled = false;
+    button.disabled = false;
     limparCadastro();
 }
 
@@ -95,12 +95,18 @@ if (formEntrar){
             };
             
             let response = await fetch('/entrar',config);
-            if (response.status == 400){
-               await mostrarListaDeErros(response,errosDivEntrar,buttonEntrar); 
-            }
             response = await response.json();
-            alert(response.message);
+            if (response.status == 400){
+                await mostrarListaDeErros(response,errosDivEntrar,buttonEntrar); 
+            }
             buttonEntrar.disabled = false;
+            if (response.status == 500) throw {
+                error: response.error || response.statusText, 
+                status: response.status,
+                message: response.message ? response.message : "Bad Request"
+            };
+            errosDivEntrar.style.display = 'none';
+            alert(`Usuario encontrando`);
         }
         catch(err){
             console.error(err);

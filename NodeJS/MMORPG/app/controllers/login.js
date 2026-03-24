@@ -1,3 +1,4 @@
+const bcrypt = require(`bcryptjs`);
 module.exports.login = (application, req, res)=>{
     res.render('login');
 }
@@ -5,24 +6,33 @@ module.exports.login = (application, req, res)=>{
 module.exports.entrar = async(application, req, res)=>{
     try{ 
         const {usuario, senha} = req.body;
-        /*adicionar validação*/
-        /* */
         const connection = application.config.dbConnection;
         const UsuarioDAO = new application.app.models.UsuariosDAO(connection, application);
         const dadosUsuario = await UsuarioDAO.buscarPorUsuario(usuario);
         if (dadosUsuario){
-            res.status(200).json({
-                message: "Usuario encontrado"
+            /*validação*/
+            const senhaValida = await bcrypt.compare(senha, dadosUsuario.senha);
+            if (!senhaValida) return res.status(400).json({
+                errors: [{message:"Senha Invalida"}],
+                status: 400
             });
+            return res.status(200).json({
+                message: "Usuario encontrado",
+                status: 200,
+                body: dadosUsuario
+            });
+            /* */
         }
-        else {
-            throw Error('Erro no login');
-        }
+        res.status(400).json({
+            errors: [{message: "Usuario não existente"}],
+            status: 400
+        })
     }
     catch (err){
         res.status(500).json({
             error: 'Internal Server Error',
-            message: err && err.message ? err.message : 'Erro inesperado no login'
+            message: err && err.message ? err.message : 'Erro inesperado no login',
+            status: 500
         });
     }
 }
