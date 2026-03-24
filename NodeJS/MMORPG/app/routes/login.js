@@ -8,4 +8,7 @@ module.exports = function(application){
 	application.post('/entrar',function(req,res){
 		application.app.controllers.login.entrar(application,req,res);
 	})
+	application.get('/sair', (req,res)=>{
+		application.app.controllers.login.sair(application,req,res);
+	})
 }

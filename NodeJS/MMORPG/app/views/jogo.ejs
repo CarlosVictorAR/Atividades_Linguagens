@@ -18,7 +18,7 @@
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container">
 				<div class="sair">
-					<a href="/"><button type="button" class="btn btn-info float-end">Sair</button></a>
+					<a href="/sair"><button type="button" class="btn btn-info float-end">Sair</button></a>
 				</div>
 			</div>
 		</nav>
@@ -32,24 +32,24 @@
 
 	    		<div class="col-md-9">
 					<div class="row barra-superior">
-<div class="col-md-2"> 
+					<div class="col-md-2"> 
 						<img src="images/habilidades/temor.jpg" title="Temor" alt="Temor" class="img-fluid" />
-							<span>754</span>
-						</div>
+							<span><%= data.temor %></span>
+					</div>
 						
-<div class="col-md-2"> 
+					<div class="col-md-2"> 
 						<img src="images/habilidades/sabedoria.jpg" title="Sabedoria" alt="Sabedoria" class="img-fluid" />
-							<span>754</span>
-						</div>
+							<span><%= data.sabedoria %></span>
+					</div>
 						
-<div class="col-md-2"> 
+					<div class="col-md-2"> 
 						<img src="images/habilidades/comercio.jpg" title="Comércio" alt="Comércio" class="img-fluid" />
-							<span>754</span>
-						</div>
+							<span><%= data.comercio %></span>
+					</div>
 						
 					<div class="col-md-2"> 
 						<img src="images/habilidades/magia.jpg" title="Magia" alt="Magia" class="img-fluid" />
-							<span>754</span>
+							<span><%= data.magia %></span>
 						</div>
 					</div>
 				</div>
@@ -70,9 +70,10 @@
 				<div class="row">
 					<div class="col-md-1">
 						<img src="images/outros/suditos.jpg" title="Aldeões" alt="Aldeões" class="img-fluid" />
+						<span><%= data.aldeoes %></span>
 					</div>
-					
-					<div class="col-md-1">
+	
+					<div class="col-md-1" id="pergaminhos">
 						<img src="images/outros/pergaminho.jpg" title="Pergaminhos" alt="Pergaminhos" class="img-fluid" />
 					</div>
 					
@@ -80,7 +81,7 @@
 					
 					<div class="col-md-2">
 						<img src="images/outros/moeda.jpg" title="Moeda" alt="Moeda" class="img-fluid" />
-						<span>25</span>
+						<span><%= data.ouro %></span>
 					</div>
 					
 				</div>

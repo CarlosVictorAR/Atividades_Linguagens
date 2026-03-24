@@ -33,6 +33,9 @@ class UsuariosDAO {
     buscarPorUsuario = async (usuario)=>{
         return this._model.findOne({usuario: {$eq: `${usuario}`}});
     }
+    buscarPorId = async (id)=>{
+        return this._model.findById(id);
+    }
 }
 module.exports = ()=>{
     return UsuariosDAO;

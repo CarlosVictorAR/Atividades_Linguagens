@@ -100,13 +100,18 @@ if (formEntrar){
                 await mostrarListaDeErros(response,errosDivEntrar,buttonEntrar); 
             }
             buttonEntrar.disabled = false;
-            if (response.status == 500) throw {
-                error: response.error || response.statusText, 
-                status: response.status,
-                message: response.message ? response.message : "Bad Request"
+            if (response.status == 500) {
+                throw {
+                    error: response.error || response.statusText, 
+                    status: response.status,
+                    message: response.message ? response.message : "Bad Request"
+                }
             };
-            errosDivEntrar.style.display = 'none';
-            alert(`Usuario encontrando`);
+            if (response.status == 200){
+                errosDivEntrar.style.display = 'none';
+                window.location.href = '/jogo';
+                return;
+            }
         }
         catch(err){
             console.error(err);
