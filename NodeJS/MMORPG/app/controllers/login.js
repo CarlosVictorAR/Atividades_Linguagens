@@ -19,7 +19,7 @@ module.exports.entrar = async(application, req, res)=>{
                 errors: [{message:"Senha Invalida"}],
                 status: 400
             });
-            req.session.usuario = {
+            req.session.usuario = {/*Usuario*/
                 id: dadosUsuario._id, 
                 usuario: dadosUsuario.usuario,
                 nome: dadosUsuario.nome,

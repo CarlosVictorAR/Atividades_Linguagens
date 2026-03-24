@@ -58,7 +58,12 @@
 			<div class="row">
 				<div class="col-md-3"></div>
 				<div class="col-md-9">
-					<div class="acoes"></div>					
+					<div class="acoes">
+						<button id="btn-recrutar" class="btn btn-warning">
+							Recrutar Aldeão (custa <%= custoRecrutamento %> ouros)
+						</button>
+						<p id="msg-recrutar" style="display:none;"></p>
+					</div>				
 				</div>
 			</div>
 			
@@ -70,22 +75,23 @@
 				<div class="row">
 					<div class="col-md-1">
 						<img src="images/outros/suditos.jpg" title="Aldeões" alt="Aldeões" class="img-fluid" />
-						<span><%= data.aldeoes %></span>
+						<span id="AldeõesQuantidade"><%= data.aldeoes %></span>
 					</div>
 	
 					<div class="col-md-1" id="pergaminhos">
 						<img src="images/outros/pergaminho.jpg" title="Pergaminhos" alt="Pergaminhos" class="img-fluid" />
 					</div>
-					
+
 					<div class="col-md-8"></div>
 					
 					<div class="col-md-2">
-						<img src="images/outros/moeda.jpg" title="Moeda" alt="Moeda" class="img-fluid" />
-						<span><%= data.ouro %></span>
+						<img src="images/outros/moeda.jpg"  title="Moeda" alt="Moeda" class="img-fluid" />
+						<span id="MoedaQuantidade"><%= data.ouro %></span>
 					</div>
 					
 				</div>
 			</div>
 		</div>
+		<script src="js/main.js"></script>
 	</body>
 </html>

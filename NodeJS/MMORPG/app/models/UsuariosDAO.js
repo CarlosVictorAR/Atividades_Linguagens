@@ -33,8 +33,17 @@ class UsuariosDAO {
     buscarPorUsuario = async (usuario)=>{
         return this._model.findOne({usuario: {$eq: `${usuario}`}});
     }
+
     buscarPorId = async (id)=>{
         return this._model.findById(id);
+    }
+
+    atualizarAtributos = async (id, atributos)=>{
+        return this._model.findByIdAndUpdate(
+            id,
+            {$set: atributos},
+            { new: true}
+        )
     }
 }
 module.exports = ()=>{

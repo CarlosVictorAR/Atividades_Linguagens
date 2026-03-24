@@ -119,3 +119,41 @@ if (formEntrar){
     });
 }
 
+/* RECRUTAR */
+let buttonRecrutar = document.getElementById('btn-recrutar');
+if (buttonRecrutar){
+    buttonRecrutar.addEventListener('click', async ()=>{
+        buttonRecrutar.disabled = true;
+        try{
+            let config = {
+                    method: 'POST', 
+                    headers: {
+                        'Content-Type': 'application/json' 
+                    },
+                    body: JSON.stringify({})
+                };
+            let response = await fetch('/acao/recrutar',config);;
+            response = await response.json();
+            let msg = document.getElementById('msg-recrutar');
+            if (response.status == 200){
+                msg.style.display = 'block'
+                msg.textContent = "Sucesso ao recrutar";
+                document.getElementById('AldeõesQuantidade').textContent = response.aldeoes;
+                document.getElementById('MoedaQuantidade').textContent = response.ouro;
+            }
+            else {
+                msg.style.display = 'block';
+                msg.textContent = response.error || "Erro ao recrutar";
+            }
+            setTimeout(()=>{
+                msg.style.display = 'none';/* limpa o texto depois de dar erro ou sucesso*/
+            },5000);
+        }
+        catch(err){
+            console.error(err);
+        }
+        finally{
+            buttonRecrutar.disabled = false;
+        }
+    });
+}
