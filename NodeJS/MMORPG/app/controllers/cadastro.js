@@ -1,9 +1,9 @@
 
-module.exports.cadastro = function(application,req,res){
+module.exports.cadastro = (application,req,res)=>{
     res.render('cadastro');
 }
 
-module.exports.cadastrar = async function(application,req,res){
+module.exports.cadastrar = async (application,req,res)=>{
     try{
         let usuario = req.body;
         /*Validação*/
@@ -36,6 +36,7 @@ module.exports.cadastrar = async function(application,req,res){
         if (erros.length > 0){//Para se der erro
             return res.status(400).json({ errors: erros });
         }
+        /* */
         let connection = application.config.dbConnection;
         let UsuariosDAO = new application.app.models.UsuariosDAO(connection, application);
         let response = await UsuariosDAO.inserirUsuario(usuario);
