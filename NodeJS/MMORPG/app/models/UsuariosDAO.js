@@ -18,7 +18,8 @@ class UsuariosDAO {
                 nome: usuario.nome,
                 senha: senhaHash,
                 usuario: usuario.usuario,
-                casa: usuario.casa
+                casa: usuario.casa,
+
             });
             return User;
         }

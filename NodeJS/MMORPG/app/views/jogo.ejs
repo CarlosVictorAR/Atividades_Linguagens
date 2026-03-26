@@ -34,22 +34,22 @@
 					<div class="row barra-superior">
 					<div class="col-md-2"> 
 						<img src="images/habilidades/temor.jpg" title="Temor" alt="Temor" class="img-fluid" />
-							<span><%= data.temor %></span>
+							<span id= "temor"><%= data.temor %></span>
 					</div>
 						
 					<div class="col-md-2"> 
 						<img src="images/habilidades/sabedoria.jpg" title="Sabedoria" alt="Sabedoria" class="img-fluid" />
-							<span><%= data.sabedoria %></span>
+							<span id="sabedoria"><%= data.sabedoria %></span>
 					</div>
 						
 					<div class="col-md-2"> 
 						<img src="images/habilidades/comercio.jpg" title="Comércio" alt="Comércio" class="img-fluid" />
-							<span><%= data.comercio %></span>
+							<span id="comercio"><%= data.comercio %></span>
 					</div>
 						
 					<div class="col-md-2"> 
 						<img src="images/habilidades/magia.jpg" title="Magia" alt="Magia" class="img-fluid" />
-							<span><%= data.magia %></span>
+							<span id="magia"><%= data.magia %></span>
 						</div>
 					</div>
 				</div>
@@ -62,7 +62,18 @@
 						<button id="btn-recrutar" class="btn btn-warning">
 							Recrutar Aldeão (custa <%= custoRecrutamento %> ouros)
 						</button>
+
 						<p id="msg-recrutar" style="display:none;"></p>
+						
+						<button id="btn-coletar-ouro" class="btn btn-success">
+							Coletar Ouro (<%= data.aldeoes %> aldeões × <%= ouroPorAldeao%> = +<%= data.aldeoes * ouroPorAldeao %> 🪙)
+						</button>
+
+						<button id="btn-habilidade" class="btn btn-primary">
+							Habilidade da Casa (custa <%= custoHabilidade %> 🪙)
+						</button>
+
+						<p id="msg-acoes" style="display:none;"></p>
 					</div>				
 				</div>
 			</div>

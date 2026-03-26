@@ -1,4 +1,4 @@
-async function mostrarListaDeErros(response,div,button){
+async function mostrarListaDeErros(response,div){
     div.style.display = 'block';
     let ul = document.createElement('ul');
     ul.innerHTML = '';
@@ -9,13 +9,19 @@ async function mostrarListaDeErros(response,div,button){
         ul.appendChild(li);
     });
     div.appendChild(ul);
-    button.disabled = false;
     throw {
         error: response.error || response.statusText,
         status: response.status,
         message: response.message ? response.message : "Bad Request"
     }
 }
+
+async function usuarioCriadoComSucesso(response,div){
+    div.style.display = 'none';
+    alert('criado');
+    limparCadastro();
+}
+
 /* CADASTRO */
 let formCadastro = document.getElementById('form-cadastro');
 if (formCadastro) {
@@ -43,23 +49,20 @@ if (formCadastro) {
             let response = await fetch('/cadastrar', config);
             response = await response.json();
             if (response.status == 400 || response.status == 409) {//se der algum dos erros entra aqui
-                await mostrarListaDeErros(response,errosDiv,buttonCadastro);
+                await mostrarListaDeErros(response,errosDiv);
             }
             //se der certo passa direto
-            await usuarioCriadoComSucesso(response,errosDiv,buttonCadastro);
+            await usuarioCriadoComSucesso(response,errosDiv);
         } catch (err) {
             console.error(err);
+        }
+        finally{
+            buttonCadastro.disabled = false;
         }
     });
 }
 
 
-async function usuarioCriadoComSucesso(response,div,button){
-    div.style.display = 'none';
-    alert('criado');
-    button.disabled = false;
-    limparCadastro();
-}
 
 async function limparCadastro(){
     document.querySelector('input[name="nome"]').value = '';
@@ -97,9 +100,8 @@ if (formEntrar){
             let response = await fetch('/entrar',config);
             response = await response.json();
             if (response.status == 400){
-                await mostrarListaDeErros(response,errosDivEntrar,buttonEntrar); 
+                await mostrarListaDeErros(response,errosDivEntrar); 
             }
-            buttonEntrar.disabled = false;
             if (response.status == 500) {
                 throw {
                     error: response.error || response.statusText, 
@@ -116,13 +118,17 @@ if (formEntrar){
         catch(err){
             console.error(err);
         }
+        finally {
+            buttonEntrar.disabled = false;
+        }
     });
 }
 
 /* RECRUTAR */
 let buttonRecrutar = document.getElementById('btn-recrutar');
 if (buttonRecrutar){
-    buttonRecrutar.addEventListener('click', async ()=>{
+    buttonRecrutar.addEventListener('click', async (event)=>{
+        event.preventDefault();
         buttonRecrutar.disabled = true;
         try{
             let config = {
@@ -132,7 +138,7 @@ if (buttonRecrutar){
                     },
                     body: JSON.stringify({})
                 };
-            let response = await fetch('/acao/recrutar',config);;
+            let response = await fetch('/acao/recrutar',config);
             response = await response.json();
             let msg = document.getElementById('msg-recrutar');
             if (response.status == 200){
@@ -154,6 +160,85 @@ if (buttonRecrutar){
         }
         finally{
             buttonRecrutar.disabled = false;
+        }
+    });
+}
+
+/* COLETAR OURO */
+const buttonColetar = document.getElementById('btn-coletar-ouro');
+if (buttonColetar){
+    buttonColetar.addEventListener('click',async (event)=>{
+        buttonColetar.disabled = true;
+        try{
+            event.preventDefault();
+            let config = {
+                        method: 'POST', 
+                        headers: {
+                            'Content-Type': 'application/json' 
+                        },
+                        body: JSON.stringify({})
+                    };
+            let response = await fetch('/acao/coletar-ouro',config);
+            response = await response.json();
+            let msg = document.getElementById('msg-acoes');
+            if (response.status == 200){
+                msg.style.display = 'block'
+                msg.textContent = "Ouro coletado com sucesso";
+                document.getElementById('MoedaQuantidade').textContent = response.ouro;
+            }
+            else {
+                msg.style.display = 'block';
+                msg.textContent = response.error || "Erro ao coletar ouro";
+            }
+            setTimeout(()=>{
+                msg.style.display = 'none';/* limpa o texto depois de dar erro ou sucesso*/
+            },5000);
+        }
+        catch(err){
+            console.error(err);
+        }
+        finally{
+            buttonColetar.disabled = false;
+        }
+    });
+}
+
+/* USAR HABILIDADE */
+const buttonHabilidade = document.getElementById('btn-habilidade');
+if (buttonHabilidade){
+    buttonHabilidade.addEventListener('click',async (event)=>{
+        buttonHabilidade.disabled = true;
+        try{
+            event.preventDefault();
+            let config = {
+                        method: 'POST', 
+                        headers: {
+                            'Content-Type': 'application/json' 
+                        },
+                        body: JSON.stringify({})
+                    };
+            let response = await fetch('/acao/habilidade',config);
+            response = await response.json();
+            let msg = document.getElementById('msg-acoes');
+            if (response.status == 200){
+                msg.style.display = 'block'
+                msg.textContent = "Habilidade utilizada com sucesso";
+                document.getElementById(response.atributo).textContent = response.valor;
+                document.getElementById('MoedaQuantidade').textContent = response.ouro;
+            }
+            else {
+                msg.style.display = 'block';
+                msg.textContent = response.error || "Erro ao utilizar habilidade";
+            }
+            setTimeout(()=>{
+                msg.style.display = 'none';/* limpa o texto depois de dar erro ou sucesso*/
+            },5000);
+        }
+        catch(err){
+            console.error(err);
+        }
+        finally{
+            buttonHabilidade.disabled = false;
         }
     });
 }
